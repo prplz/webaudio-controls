@@ -570,9 +570,7 @@ ${this.basestyle}
         this.sendEvent("input"),this.sendEvent("change");
     }
     keydown(e){
-      const delta = this.step;
-      if(delta==0)
-        delta=1;
+      const delta = this.step||1;
       switch(e.key){
       case "ArrowUp":
         this.setValue(this.value+delta,true);
@@ -988,9 +986,7 @@ ${this.basestyle}
         this.sendEvent("input"),this.sendEvent("change");
     }
     keydown(e){
-      const delta = this.step;
-      if(delta==0)
-        delta=1;
+      const delta = this.step||1;
       switch(e.key){
       case "ArrowUp":
         this.setValue(this.value+delta,true);
