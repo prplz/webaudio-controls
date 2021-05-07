@@ -68,9 +68,9 @@ if(window.customElements){
   midimenu.id="webaudioctrl-context-menu";
   midimenu.innerHTML=
 `<li class="webaudioctrl-context-menu__title">MIDI Learn</li>
-<li class="webaudioctrl-context-menu__item" id="webaudioctrl-context-menu-learn" onclick="webAudioControlsWidgetManager.contextMenuLearn()">Learn</li>
-<li class="webaudioctrl-context-menu__item" onclick="webAudioControlsWidgetManager.contextMenuClear()">Clear</li>
-<li class="webaudioctrl-context-menu__item" onclick="webAudioControlsWidgetManager.contextMenuClose()">Close</li>
+<li class="webaudioctrl-context-menu__item" id="webaudioctrl-context-menu-learn" onclick="window.webAudioControlsWidgetManager.contextMenuLearn()">Learn</li>
+<li class="webaudioctrl-context-menu__item" onclick="window.webAudioControlsWidgetManager.contextMenuClear()">Clear</li>
+<li class="webaudioctrl-context-menu__item" onclick="window.webAudioControlsWidgetManager.contextMenuClose()">Close</li>
 `;
   let opt={
     useMidi:0,
@@ -296,7 +296,7 @@ if(window.customElements){
     }
     contextMenu(e){
       if(window.webAudioControlsWidgetManager && this.midilearn)
-        webAudioControlsWidgetManager.contextMenuOpen(e,this);
+        window.webAudioControlsWidgetManager.contextMenuOpen(e,this);
       e.preventDefault();
       e.stopPropagation();
     }
@@ -316,9 +316,9 @@ if(window.customElements){
       const controlNumber = event.data[1];
       if(this.midiMode == 'learn') {
         this.setMidiController(channel, controlNumber);
-        webAudioControlsWidgetManager.contextMenuClose();
+        window.webAudioControlsWidgetManager.contextMenuClose();
         this.midiMode = 'normal';
-        webAudioControlsWidgetManager.preserveMidiLearn();
+        window.webAudioControlsWidgetManager.preserveMidiLearn();
       }
       if(this.listeningToThisMidiController(channel, controlNumber)) {
         if(this.tagName=="WEBAUDIO-SWITCH"){
@@ -422,8 +422,8 @@ ${this.basestyle}
           this.setMidiController(ch, cc);
       }
       if(this.midilearn && this.id){
-        if(webAudioControlsWidgetManager && webAudioControlsWidgetManager.midiLearnTable){
-          const ml=webAudioControlsWidgetManager.midiLearnTable;
+        if(window.webAudioControlsWidgetManager && window.webAudioControlsWidgetManager.midiLearnTable){
+          const ml=window.webAudioControlsWidgetManager.midiLearnTable;
           for(let i=0; i < ml.length; ++i){
             if(ml[i].id==this.id){
               this.setMidiController(ml[i].cc.channel, ml[i].cc.cc);
@@ -791,8 +791,8 @@ ${this.basestyle}
           this.setMidiController(ch, cc);
       }
       if(this.midilearn && this.id){
-        if(webAudioControlsWidgetManager && webAudioControlsWidgetManager.midiLearnTable){
-          const ml=webAudioControlsWidgetManager.midiLearnTable;
+        if(window.webAudioControlsWidgetManager && window.webAudioControlsWidgetManager.midiLearnTable){
+          const ml=window.webAudioControlsWidgetManager.midiLearnTable;
           for(let i=0; i < ml.length; ++i){
             if(ml[i].id==this.id){
               this.setMidiController(ml[i].cc.channel, ml[i].cc.cc);
@@ -1205,8 +1205,8 @@ ${this.basestyle}
           this.setMidiController(ch, cc);
       }
       if(this.midilearn && this.id){
-        if(webAudioControlsWidgetManager && webAudioControlsWidgetManager.midiLearnTable){
-          const ml=webAudioControlsWidgetManager.midiLearnTable;
+        if(window.webAudioControlsWidgetManager && window.webAudioControlsWidgetManager.midiLearnTable){
+          const ml=window.webAudioControlsWidgetManager.midiLearnTable;
           for(let i=0; i < ml.length; ++i){
             if(ml[i].id==this.id){
               this.setMidiController(ml[i].cc.channel, ml[i].cc.cc);
